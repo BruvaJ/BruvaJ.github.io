@@ -191,3 +191,7 @@ div.doubleContainer{
   padding-top: 20px;
   border-radius: 15px;
 }
+
+p.divTitle{
+  text-align: center;
+}

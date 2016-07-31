@@ -1,0 +1,215 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript">
+
+var correct = 0;
+var multiChoice = 0;
+$(init);
+
+function init(){
+	$('#successMessage').hide();
+	$('#successMessage').css( {
+	  left: '580px',
+	  top: '250px',
+	  width: 0,
+	  height: 0
+	} );
+
+	$('#errorMessage').hide();
+	$('#errorMessage').css( {
+	  left: '580px',
+	  top: '250px',
+	  width: 0,
+	  height: 0
+	} );
+
+
+	// reset the game
+	correct = 0;
+	var triesLeft = 3;
+	$('#unsortedMotives').html('');
+	$('#sortedMotives').html('');
+
+
+  // Create the motives
+
+	var extrinsicMotives = ["Getting paid for your work", "Completing your studies"];
+	var intrinsicMotives = ["Solving a problem", "Learning more about the digital world"];
+	createDraggable(extrinsicMotives, "extrinsic", "#unsortedMotives");
+	createDraggable(intrinsicMotives, "intrinsic", "#unsortedMotives");
+	createDroppable("extrinsic", "#extrinsicMotives");
+	createDroppable("intrinsic", "#intrinsicMotives");
+}
+
+
+
+function createDraggable(words, type, location){
+	for(var i = 0; i<2; i++){
+	  $('<div id="bigBox">' + words[i] + '</div>').data('type', type ).appendTo(location).draggable( 	{
+	  containment: '#content',
+	  stack: '#unsortedMotives div',
+	  cursor: 'move',
+	  revert: true
+		} );
+	}
+}
+
+function createDroppable(type, location){
+	for ( var i=0; i< 2; i++ ) {
+    $('<div id="smallBox">' + "<i>drag here</i>" + '</div>').data( 'type', type ).appendTo(location).droppable( {
+      accept: '#unsortedMotives div',
+      hoverClass: 'hovered',
+      drop: handleDrop
+    } );
+  }
+}
+
+function handleDrop( event, ui ) {
+  var answer = $(this).data('type');
+  var compareAnswer = ui.draggable.data('type');
+ 
+  // If the card was dropped to the correct slot,
+  // change the card colour, position it directly
+  // on top of the slot, and prevent it being dragged
+  // again
+ 
+  if ( answer == compareAnswer ) {
+    ui.draggable.addClass('correct');
+    ui.draggable.draggable( 'disable' );
+    $(this).droppable( 'disable' );
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+    correct++;
+    ui.draggable.css({
+      background: '#00b3e3',
+      color: "white"
+    });
+  }else{
+  	ui.draggable.css({
+      background: '#e84079'
+    });
+  	$('#errorMessage').show();
+  	$('#errorMessage').animate({
+      left: '45%',
+      top: '45%',
+      width: '10%',
+      height: '10%',
+      opacity: 1
+    } ); 
+    $('#errorMessage').fadeOut(3000);		
+  }
+
+  
+  if(correct == 4){
+  	showSuccess();
+  }
+
+function showError(){
+  	$('#errorMessage').show();
+  	$('#errorMessage').animate({
+      left: '45%',
+      top: '45%',
+      width: '10%',
+      height: '10%',
+      opacity: 1
+    } ); 
+    $('#errorMessage').fadeOut(3000);			
+}
+
+function showSuccess(){
+	$('#successMessage').show();
+    $('#successMessage').animate( {
+      left: '45%',
+      top: '45%',
+      width: '10%',
+      height: '5%',
+      opacity: 1
+    } );
+    $('#successMessage').fadeOut(3000);
+}
+}
+
+function checkAnswer2(check){
+	if(check.textContent =="Technology"){
+	$('#successMessage').show();
+    $('#successMessage').animate( {
+      left: '45%',
+      top: '45%',
+      width: '10%',
+      height: '5%',
+      opacity: 1
+    } );
+    $('#successMessage').fadeOut(2000);
+    check.style.background="#00b3e3"
+	}else{
+  	$('#errorMessage').show();
+  	$('#errorMessage').animate({
+      left: '45%',
+      top: '45%',
+      width: '10%',
+      height: '10%',
+      opacity: 1
+    } ); 
+    $('#errorMessage').fadeOut(2000);	
+    check.style.background="black"
+    multiChoice = 1;
+	}
+}
+ 
+</script>
+</head>
+ 	<ul>
+  		<li><a href="./part1.html">Part 1</a></li>
+  		<li><a href="">Part 2</a></li>
+ 		<li><a href="">Part 3</a></li>
+  		<li><a href="">Part 4</a></li>
+	</ul>
+	<br>
+	<br>
+
+	<h1 align = "center">Are the following Intrinsic or Extrinsic Motivators?</h1>
+	
+	<div class="container1">
+  <div id="unsortedMotives"></div>
+</div>
+<div class="doubleContainer">
+  <div class="container2">
+    <div id="extrinsicMotives"></div>
+  </div>
+  <div class="container2">
+     <div id="intrinsicMotives"></div>
+  </div>
+
+</div>
+ <div id="successMessage" class="popUp">
+    Good job!
+</div>
+  <div id="errorMessage" class="popUp">Oops! Try again.</div>
+
+	<br>
+	<div id="answer1" class="result"></div>
+
+
+	<br><hr>
+
+	<h1 align = "center"> Which of these is not a level in Maslow's Hierarchy?</h1> 
+	<table>
+		<caption>Select one of the following</caption>
+		<tr>
+			<td clas="selectable" onclick="checkAnswer2(this)">Physiological</td>
+			<td class="selectable" onclick="checkAnswer2(this)">Security</td>
+		</tr>
+		<tr>
+			<td class="selectable" onclick="checkAnswer2(this)">Esteem</td>
+			<td class="selectable" onclick="checkAnswer2(this)">Technology</td>
+		</tr>
+	</table>
+	<br>
+	<div id="answer2" class="result"></div>
+
+</html>

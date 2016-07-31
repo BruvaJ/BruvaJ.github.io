@@ -1,0 +1,193 @@
+html{
+  overflow-x:hidden;
+}
+
+h1{
+  font-style: italic;
+}
+
+body{
+  font-family: Arial;
+  font-size: 15pt;
+}
+
+ul {
+  position: fixed;
+  margin: -8px;
+  background-color: #232f5f;
+  width: 100%;
+  padding: 0;
+  z-index: 2000;
+}
+
+
+li {
+    display: inline-block;
+}
+
+
+
+li a {
+
+  display: block;
+
+  color: white;
+
+  text-align: center;
+
+  padding: 14px 16px;
+
+  text-decoration: none;
+
+}
+
+
+
+li a:hover {
+
+  background-color: #e84079;
+
+}
+
+
+li a:active{
+  background-color: #151d3a;
+}
+
+caption{
+  text-align: center;
+}
+
+table{
+  border-spacing: 10px;
+  margin-left: 20%;
+  position: relative;
+  width:60%
+}
+
+td {
+  color: white;
+  height: 37px;
+  text-align: center;
+  width: 30%;
+  background: #232f5f;
+    border-radius: 10px;
+    border-style: outset;
+}
+
+td:hover{
+  background: #e84079;
+}
+
+td:active{
+  background: #151d3a;
+  border-style: inset;
+}
+
+.clickable {
+  width: 5%;
+  margin-left: 47.5%;
+  color: white;
+  text-align: center;
+  background: #232f5f;
+}
+
+.clickable:hover{
+  background: #e84079;
+}
+
+.clickable:active{
+  background: black;
+}
+
+.result{
+  color: white;
+  position: relative;
+  left: 42.5%;
+  width: 15%;
+  background: #e84079;
+  text-align: center;
+}
+
+div.top{
+  height: 50px;
+  width:80%;
+  margin-left:10%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#unsortedMotives,#extrinsicMotives,#intrinsicMotives{
+  border: 2px;
+  border-style: outset;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+}
+
+#extrinsicMotives,#intrinsicMotives{
+}
+
+#unsortedMotives{
+}
+/* Individual cards and slots */
+
+div#bigBox{
+  color: white;
+  border: 2px solid white;
+  border-style: outset;
+  background: #232f5f
+}
+
+#bigBox, #smallBox{
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 15px;  
+}
+
+#smallBox{
+  color: #d3d3d3;
+  position: relative;
+  border: 2px white;
+  border-style: inset;
+  background: #FCF6CF;
+}
+
+div.container1{
+  display: inline-block;
+  position: relative;
+  margin-left: 30%;
+  width: 40%;  
+}
+
+div.container2{
+  display: inline-block;
+  position: relative;
+  padding-top: 2%;
+  margin-left: auto;
+  width: 40%;
+}
+
+div.singleContainer{
+  margin-left: 40%;
+}
+
+div.doubleContainer{
+  display: inline-block;
+  position: relative;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.popUp{
+  text-align: center;
+  position: fixed;
+  z-index: 100;
+  background: lightblue;
+  padding-top: 20px;
+  border-radius: 15px;
+}

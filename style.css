@@ -157,8 +157,8 @@ div#bigBox{
   background: #FCF6CF;
 }
 
-#smallBox.hovered{
-  background: #FFB6C1 
+div#smallBox.hovered{
+  background: #FFB6C1;
 }
 
 div.container1{

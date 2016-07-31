@@ -73,11 +73,6 @@ function handleDrop( event, ui ) {
   var answer = $(this).data('type');
   var compareAnswer = ui.draggable.data('type');
  
-  // If the card was dropped to the correct slot,
-  // change the card colour, position it directly
-  // on top of the slot, and prevent it being dragged
-  // again
- 
   if ( answer == compareAnswer ) {
     ui.draggable.addClass('correct');
     ui.draggable.draggable( 'disable' );
@@ -182,7 +177,7 @@ function checkAnswer2(check){
     <div id="extrinsicMotives"></div>
   </div>
   <div class="container2">
-  <p class="divTitle">Extrinsic Intrinsic</p>
+  <p class="divTitle">Intrinsic Motivators</p>
      <div id="intrinsicMotives"></div>
   </div>
 

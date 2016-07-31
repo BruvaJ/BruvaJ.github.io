@@ -1,10 +1,12 @@
  <!DOCTYPE html>
  <html>
  <head>
+	<link rel="stylesheet" type="text/css" href="./style.css">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
  
 <script type="text/javascript">
+
 var correct = 0;
 var multiChoice = 0;
 $(init);
@@ -71,6 +73,11 @@ function handleDrop( event, ui ) {
   var answer = $(this).data('type');
   var compareAnswer = ui.draggable.data('type');
  
+  // If the card was dropped to the correct slot,
+  // change the card colour, position it directly
+  // on top of the slot, and prevent it being dragged
+  // again
+ 
   if ( answer == compareAnswer ) {
     ui.draggable.addClass('correct');
     ui.draggable.draggable( 'disable' );
@@ -111,7 +118,7 @@ function showError(){
       height: '10%',
       opacity: 1
     } ); 
-    $('#errorMessage').fadeOut(3000);			
+    $('#errorMessage').fadeOut(2000);			
 }
 
 function showSuccess(){
@@ -137,7 +144,7 @@ function checkAnswer2(check){
       height: '5%',
       opacity: 1
     } );
-    $('#successMessage').fadeOut(2000);
+    $('#successMessage').fadeOut(3000);
     check.style.background="#00b3e3"
 	}else{
   	$('#errorMessage').show();
@@ -155,11 +162,9 @@ function checkAnswer2(check){
 }
  
 </script>
-
-	<link rel="stylesheet" type="text/css" href="./style.css">
 </head>
  	<ul>
-  		<li><a href="./index.html">Part 1</a></li>
+  		<li><a href="./part1.html">Part 1</a></li>
   		<li><a href="">Part 2</a></li>
  		<li><a href="">Part 3</a></li>
   		<li><a href="">Part 4</a></li>
@@ -174,9 +179,11 @@ function checkAnswer2(check){
 </div>
 <div class="doubleContainer">
   <div class="container2">
+  <p class="divTitle">Extrinsic Motives</p>
     <div id="extrinsicMotives"></div>
   </div>
   <div class="container2">
+  <p class="divTitle">Extrinsic Intrinsic</p>
      <div id="intrinsicMotives"></div>
   </div>
 

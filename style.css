@@ -117,7 +117,7 @@ div.top{
   vertical-align: middle;
 }
 
-#unsortedMotives,#extrinsicMotives,#intrinsicMotives{
+#unsortedMotives{
   border: 2px;
   border-style: outset;
   -moz-border-radius: 10px;
@@ -133,11 +133,11 @@ div.top{
 
 #unsortedMotives{
 }
-/* Individual cards and slots */
+
 
 div#bigBox{
   color: white;
-  border: 2px solid white;
+  border: 4px solid white;
   border-style: outset;
   background: #232f5f
 }
@@ -152,7 +152,7 @@ div#bigBox{
 #smallBox{
   color: #d3d3d3;
   position: relative;
-  border: 2px white;
+  border: 4px white;
   border-style: inset;
   background: #FCF6CF;
 }

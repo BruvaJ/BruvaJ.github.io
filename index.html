@@ -1,211 +1,115 @@
- <!DOCTYPE html>
- <html>
- <head>
-	<link rel="stylesheet" type="text/css" href="./style.css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
- 
-<script type="text/javascript">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-var correct = 0;
-var multiChoice = 0;
-$(init);
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-function init(){
-	$('#successMessage').hide();
-	$('#successMessage').css( {
-	  left: '580px',
-	  top: '250px',
-	  width: 0,
-	  height: 0
-	} );
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 
-	$('#errorMessage').hide();
-	$('#errorMessage').css( {
-	  left: '580px',
-	  top: '250px',
-	  width: 0,
-	  height: 0
-	} );
+    <title>John Warren Software</title>
+  </head>
+  <body>
+    <!-- Image and text -->
+    <nav class="navbar sticky-top my-nav">
+      <a class="navbar-brand" href="#">
+        JW
+      </a>
+    </nav>
+    <div class="all-content">
+      <div class="entry">
+          <div class="media my-background">
+            <img class="align-self-center mr-3 my-thumbnail" src="me-128.png" alt="myImage">
+            <div class="media-body">
+              <h3 class="mt-0">Hi, I'm John</h3>
+              <h6 class="mt-0">MSc Computer Science (Distinction) - University of Kent, 2016</h6>
+              <p class="mb-0">I started life focusing on human languages, but as time went by I got bored of people and decided to speak to computers instead.
+                I now work mainly in Java and PL/SQL, whilst in my spare time am exploring this fantastic new technology known as the "World Wide Web".
+                I've started with Django, and as I become more and more comfortable with it plan on moving into Node.js and React.js to secure my position as a Full Stack Web Dev machine.</p>
+            </div>
+          </div>
+      </div>
+      <br>
+      <div class="entry">
+        <hr>
+      </div>
+      <br>
+      <div class="entry">
+        <div class="row left-info">
+          <div class="col-10 detail">
+            <h3>Language Learning App</h3>
+            <h6 class="mt-0">Java, LibGDX, Gradle</h6>
+            <p>This projected was completed as part of my MSc in Computer Science.</p>
+            <p>A good deal of research went into both current language learning apps on the market-place, and into technology in education when designing the app.</p>
+          </div>
+          <div class="col-2 overview">
+            <a href="https://github.com/BruvaJ/summerProject"><img class="overview-image" src="languageGame.png" alt="game"></a>
+          </div>
+        </div>
+          <br>
+          <div class="row right-info">
+            <div class="col-2 overview">
+                <a href="https://github.com/BruvaJ/"><img class="overview-image" src="Octocat.png" alt="GitHub"></a>
+            </div>
+            <div class="col-10 detail">
+              <h3>GitHub</h3>
+              <h6>A bit of everything</h6>
+              <p>As a rule all my new projects can be found here, both small experiments with code and larger more formal projects.</p>
+              <p>Once I have more projects online I will replace this with a curated list of my most polished projects.</p>
+            </div>
+          </div>
+          <br>
+          <div class="row left-info">
+            <div class="col-10 detail">
+              <h3>Blog</h3>
+              <h6>Tech, Agile, and thoughts on Education</h6>
+              <p>Though still it its early stages this blog will become home to walkthroughs to any difficult tech challenges I encounter both in personal and professional projects.</p>
+              <p>Parts of my dissertation I plan to break down and include here as well at a later date.</p>
+            </div>
+            <div class="col-2 overview">
+              <a href="https://bruvaj.wordpress.com/"><img class="overview-image" src="wmark.png" alt="Wordpress"></a>
+            </div>
+          </div>
+      </div>
 
-
-	// reset the game
-	correct = 0;
-	var triesLeft = 3;
-	$('#unsortedMotives').html('');
-	$('#sortedMotives').html('');
-
-
-  // Create the motives
-
-	var extrinsicMotives = ["Getting paid for your work", "Completing your studies"];
-	var intrinsicMotives = ["Solving a problem", "Learning more about the digital world"];
-	createDraggable(extrinsicMotives, "extrinsic", "#unsortedMotives");
-	createDraggable(intrinsicMotives, "intrinsic", "#unsortedMotives");
-	createDroppable("extrinsic", "#extrinsicMotives");
-	createDroppable("intrinsic", "#intrinsicMotives");
-}
-
-
-
-function createDraggable(words, type, location){
-	for(var i = 0; i<2; i++){
-	  $('<div id="bigBox">' + words[i] + '</div>').data('type', type ).appendTo(location).draggable( 	{
-	  containment: '#content',
-	  stack: '#unsortedMotives div',
-	  cursor: 'move',
-	  revert: true
-		} );
-	}
-}
-
-function createDroppable(type, location){
-	for ( var i=0; i< 2; i++ ) {
-    $('<div id="smallBox">' + "<i>drag here</i>" + '</div>').data( 'type', type ).appendTo(location).droppable( {
-      accept: '#unsortedMotives div',
-      hoverClass: 'hovered',
-      drop: handleDrop
-    } );
-  }
-}
-
-function handleDrop( event, ui ) {
-  var answer = $(this).data('type');
-  var compareAnswer = ui.draggable.data('type');
- 
-  if ( answer == compareAnswer ) {
-    ui.draggable.addClass('correct');
-    ui.draggable.draggable( 'disable' );
-    $(this).droppable( 'disable' );
-    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-    ui.draggable.draggable( 'option', 'revert', false );
-    correct++;
-    ui.draggable.css({
-      background: '#00b3e3',
-    });
-  }else{
-  	ui.draggable.css({
-      background: '#e84079'
-    });
-  	$('#errorMessage').show();
-  	$('#errorMessage').animate({
-      left: '45%',
-      top: '45%',
-      width: '10%',
-      height: '10%',
-      opacity: 1
-    } ); 
-    $('#errorMessage').fadeOut(3000);		
-  }
-
-  
-  if(correct == 4){
-  	showSuccess();
-  }
-
-function showError(){
-  	$('#errorMessage').show();
-  	$('#errorMessage').animate({
-      left: '45%',
-      top: '45%',
-      width: '10%',
-      height: '10%',
-      opacity: 1
-    } ); 
-    $('#errorMessage').fadeOut(2000);			
-}
-
-function showSuccess(){
-	$('#successMessage').show();
-    $('#successMessage').animate( {
-      left: '45%',
-      top: '45%',
-      width: '10%',
-      height: '5%',
-      opacity: 1
-    } );
-    $('#successMessage').fadeOut(3000);
-}
-}
-
-function checkAnswer2(check){
-	if(check.textContent =="Technology"){
-	$('#successMessage').show();
-    $('#successMessage').animate( {
-      left: '45%',
-      top: '45%',
-      width: '10%',
-      height: '5%',
-      opacity: 1
-    } );
-    $('#successMessage').fadeOut(3000);
-    check.style.background="#00b3e3"
-	}else{
-  	$('#errorMessage').show();
-  	$('#errorMessage').animate({
-      left: '45%',
-      top: '45%',
-      width: '10%',
-      height: '10%',
-      opacity: 1
-    } ); 
-    $('#errorMessage').fadeOut(2000);	
-    check.style.background="black"
-    multiChoice = 1;
-	}
-}
- 
-</script>
-</head>
- 	<ul>
-  		<li><a href="./index.html">Part 1</a></li>
-  		<li><a href="#">Part 2</a></li>
- 		<li><a href="#">Part 3</a></li>
-  		<li><a href="#">Part 4</a></li>
-	</ul>
-	<br>
-	<br>
-
-	<h1 align = "center">Are the following Intrinsic or Extrinsic Motivators?</h1>
-	
-	<div class="container1">
-  <div id="unsortedMotives"></div>
-</div>
-<div class="doubleContainer">
-  <div class="container2">
-  <p class="divTitle">Extrinsic Motivators</p>
-    <div id="extrinsicMotives"></div>
-  </div>
-  <div class="container2">
-  <p class="divTitle">Intrinsic Motivators</p>
-     <div id="intrinsicMotives"></div>
-  </div>
-
-</div>
- <div id="successMessage" class="popUp">
-    Good job!
-</div>
-  <div id="errorMessage" class="popUp">Oops! Try again.</div>
-
-	<br>
-	<div id="answer1" class="result"></div>
+      <br>
+    </div>
+    <div class="card my-card" style="width: 20%; left:40%; right:40%;">
+      <div class="card-body">
+        <h3 class="card-title">Want to get in touch?</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Don't hold back!</h6>
+        <p class="card-text" align="center">I'm keen to hear from like-minded people who share my passion for education and technology. Add me on LinkedIn or send me an e-mail and I'll get back to you as soon as possible.</p>
+      <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+          <a href="https://www.linkedin.com/in/jww21/" class="card-link"><img class="img-response center" src="linkedInS.png" alt="LinkedIn®"></a>
+        </div>
+          <div class="col-3">
+          <a href="#" class="card-link"><img class="email-icon center" src="envelope-closed-4x.png" alt="email"></a>
+        </div>
+          <div class="col-3">
+          </div>
+        </div>
+        <div class="container">
+          <p align="center">johnwilliamwarren@hotmail.com</p>
+        </div>
+      </div>
+    </div>
 
 
-	<br><hr>
-
-	<h1 align = "center"> Which of these is not a level in Maslow's Hierarchy?</h1> 
-	<table>
-		<caption>Select one of the following</caption>
-		<tr>
-			<td clas="selectable" onclick="checkAnswer2(this)">Physiological</td>
-			<td class="selectable" onclick="checkAnswer2(this)">Security</td>
-		</tr>
-		<tr>
-			<td class="selectable" onclick="checkAnswer2(this)">Esteem</td>
-			<td class="selectable" onclick="checkAnswer2(this)">Technology</td>
-		</tr>
-	</table>
-	<br>
-	<div id="answer2" class="result"></div>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

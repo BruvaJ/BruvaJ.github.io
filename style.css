@@ -4,7 +4,7 @@
     font-family: 'Permanent Marker', cursive;
 }
 
-.my-thumbnail {
+.my-thumbnail.my-images {
   border-radius: 50%;
 }
 
@@ -87,7 +87,7 @@ border-radius: 30px 30px 30px 30px;
   margin-right: auto;
 }
 
-.overview-image{
+.my-images{
  border-radius: 10px;
  width:100%;
  position: relative;

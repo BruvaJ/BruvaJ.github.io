@@ -21,14 +21,8 @@
     width: 50%;
 }
 
-.left-info{
-  border-radius: 30px 15px 15px 30px;
-  background-color: #ff9c3c;
-  padding: 20px;
-}
-
-.right-info{
-  border-radius: 15px 30px 30px 15px;
+.info{
+  border-radius: 30px;
   background-color: #ff9c3c;
   padding: 20px;
 }
@@ -43,7 +37,7 @@ h3, h6{
 
 p{
   font-family: 'Love Ya Like A Sister', cursive;
-  font-size: large;
+  font-size: 150%;
 }
 
 .my-background{
